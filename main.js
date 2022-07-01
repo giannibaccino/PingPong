@@ -10,14 +10,14 @@
 
     self.Board.prototype = { 
         get elements(){ //Agregar barras y pelota
-            var elements = this.bars;
+            var elements = this.bars.map(function(bar){ return bar; }); //paso el arreglo como copia
             elements.push(this.ball);
             return elements;
         }
     }
 })();
 
-(function(){
+(function(){ //Se implementa la pelota
     self.Ball = function(x,y,radius,board){
         this.x = x;
         this.y = y;
@@ -25,8 +25,16 @@
         this.speed_y = 0;
         this.speed_x = 3;
         this.board = board;
+        this.direction = 1;
         board.ball = this;
         this.kind = "circle";
+    }
+
+    self.Ball.prototype = {
+        move: function(){
+            this.x += (this.speed_x * this.direction);
+            this.y += (this.speed_y);
+        }
     }
 })();
 
@@ -75,8 +83,11 @@
             };
         },
         play: function(){
-            this.clean();
-            this.draw();
+            if(this.board.playing){
+                this.clean();
+                this.draw();
+                this.board.ball.move();
+            }
         }
     }
 
@@ -103,16 +114,29 @@ var board_view = new BoardView(canvas, board);
 var ball = new Ball(350, 100, 10, board);
 
 document.addEventListener("keydown", function(ev) {
-    ev.preventDefault();
-    if(ev.keyCode == 38)//flecha arriba
+    if(ev.keyCode === 38){//flecha arriba
+        ev.preventDefault();
         bar.up();
-    else if(ev.keyCode == 40)//flecha abajo
+    }
+    else if(ev.keyCode === 40){//flecha abajo
+        ev.preventDefault();
         bar.down();
-    else if(ev.keyCode == 87)//w
+    }
+    else if(ev.keyCode === 87){//w
+        ev.preventDefault();
         bar2.up();
-    else if (ev.keyCode == 83)//s
+    }
+    else if (ev.keyCode === 83){//s
+        ev.preventDefault();
         bar2.down();
+    }
+    else if(ev.keyCode === 32){//espacio
+        ev.preventDefault();
+        board.playing = !board.playing;
+    }
 });
+
+board_view.draw();
 
 window.requestAnimationFrame(controller);
 
