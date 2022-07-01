@@ -1,0 +1,27 @@
+body{
+    background-color:blanchedalmond;
+}
+#canvas{
+    background-color: grey;
+    
+}
+h1{
+    font-size: 4rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color:darkslateblue;
+}
+#scoreA{
+    font-size: 4rem;
+    text-align: right;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#scoreB{
+    font-size: 4rem;
+    text-align: left;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.puntos{
+    display: flex;
+    justify-content: space-between;
+}
