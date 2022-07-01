@@ -23,5 +23,9 @@ h1{
 }
 .puntos{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+.juego{
+    margin: auto;
+    text-align: center;
 }
