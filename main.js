@@ -33,6 +33,8 @@
             this.playing = !this.playing;
             scoreA.innerHTML = 0;
             scoreB.innerHTML = 0;
+            this.scoreA = 0;
+            this.scoreB = 0;
         }
     }
 })();
@@ -162,23 +164,39 @@
         },
         check_collisions: function(){
             if(this.board.ball.x + this.board.ball.radius > this.board.width){ //si es punto de A
-                this.board.ball.resetBall();
                 this.board.scoreA++;
                 scoreA.innerHTML = this.board.scoreA;
-                alert("Punto del jugador 1"); 
+                swal({
+                    title: "PUNTO DEL JUGADRO 1",
+                    timer: 1000,
+                    button: false,
+                  });
+                this.board.ball.resetBall(); 
                 if(this.board.scoreA == 5){
                     this.board.stopGame();
-                    alert("Felicitaciones jugador 1, ganaste!");
+                    swal({
+                        title: "FELICITACIONES JUGADOR 1 GANASTE!",
+                        timer: 2000,
+                        button: false,
+                      });
                 }
             }
             if(this.board.ball.x + this.board.ball.radius <= 20){ //si es punto de B
-                this.board.ball.resetBall();
                 this.board.scoreB++;
                 scoreB.innerHTML = this.board.scoreB;
-                alert("Punto del jugador 2");
+                swal({
+                    title: "PUNTO DEL JUGADRO 2",
+                    timer: 1000,
+                    button: false,
+                  });
+                  this.board.ball.resetBall();
                 if(this.board.scoreB == 5){
                     this.board.stopGame();
-                    alert("Felicitaciones jugador 2, ganaste!");
+                    swal({
+                        title: "FELICITACIONES JUGADOR 2 GANASTE!",
+                        timer: 2000,
+                        button: false,
+                      });
                 }                 
             }
 
