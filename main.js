@@ -167,7 +167,7 @@
                 this.board.scoreA++;
                 scoreA.innerHTML = this.board.scoreA;
                 swal({
-                    title: "PUNTO DEL JUGADRO 1",
+                    title: "PUNTO DEL JUGADOR 1",
                     timer: 1000,
                     button: false,
                   });
@@ -185,7 +185,7 @@
                 this.board.scoreB++;
                 scoreB.innerHTML = this.board.scoreB;
                 swal({
-                    title: "PUNTO DEL JUGADRO 2",
+                    title: "PUNTO DEL JUGADOR 2",
                     timer: 1000,
                     button: false,
                   });
